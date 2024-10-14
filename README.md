@@ -2,7 +2,7 @@
 
 A set of utilities for the C/C++ programming language.
 
-## Folders
+## Contents
 
 - ![`arena/`](arena/) - Implementation of an Arena allocator.
 - ![`debug.h`](debug.h) - Header with utilities for debugging.
