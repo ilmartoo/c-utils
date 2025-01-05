@@ -23,7 +23,8 @@ CFLAGS = -Wall -Werror -Wextra -Wfloat-equal -Wuninitialized -Winit-self -Wno-mi
 #
 # Directories
 #
-FILE_DIRS = . arena #single_linked_list
+SRC_DIR   = src
+FILE_DIRS = $(SRC_DIR) $(SRC_DIR)/arena #$(SRC_DIR)/single_linked_list
 BIN_DIR   = bin
 INC_DIRS  = $(FILE_DIRS)
 # LIB_DIR   = libs
@@ -46,7 +47,7 @@ INC_PATHS = $(addprefix -I ,$(INC_DIRS))
 #
 # Tests
 #
-TESTS_DIR = tests
+TESTS_DIR = src/tests
 
 TT_NAME       = tests
 TT_DIRS       = $(FILE_DIRS) $(TESTS_DIR)
@@ -78,7 +79,7 @@ $(TT_EXECUTABLE): $(TT_OBJECTS)
 #	$(CC) $(CFLAGS) $(TT_FLAGS) -o $(TT_EXECUTABLE) $^ $(TT_INC_PATHS) $(LIB_PATHS) $(LIBS)
 	$(CC) $(CFLAGS) $(TT_FLAGS) -o $(TT_EXECUTABLE) $^ $(TT_INC_PATHS)
 
-$(BIN_DIR)/%.o: */%.c
+$(BIN_DIR)/%.o: $(SRC_DIR)/*/%.c
 #	$(CC) $(CFLAGS) $(TT_FLAGS) -c -o $@ $< $(TT_INC_PATHS) $(LIB_PATHS) $(LIBS)
 	$(CC) $(CFLAGS) $(TT_FLAGS) -c -o $@ $< $(TT_INC_PATHS)
 
