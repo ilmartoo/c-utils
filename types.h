@@ -1,7 +1,10 @@
 #pragma once
-#ifndef _TYPES_H_
-#define _TYPES_H_
+#ifndef __ILMARTO_TYPES_H_
+#define __ILMARTO_TYPES_H_
 
+#define __ILMARTO_TYPES_H_DEFINED_ 1
+
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -34,15 +37,4 @@ typedef size_t usize;
 // String type
 typedef char* string;
 
-#ifndef bool
-
-    // 32 bit boolean type
-    typedef int32_t bool;
-    // True boolean value
-    #define true 1
-    // False boolean value
-    #define false 0
-
-#endif // bool
-
-#endif // _TYPES_H_
+#endif // __ILMARTO_TYPES_H_

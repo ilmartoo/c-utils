@@ -1,40 +1,28 @@
 #pragma once
-#ifndef _HELPERS_H_
-#define _HELPERS_H_
+#ifndef __ILMARTO_HELPERS_H_
+#define __ILMARTO_HELPERS_H_
+
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
 
 // Retrieves the maximum value
-#define max(a,b) (((a) > (b)) ? (a) : (b))
+#define max(a, b) (((a) > (b)) ? (a) : (b))
 // Retrieves the minimum value
-#define min(a,b) (((a) < (b)) ? (a) : (b))
-
-// Retrieves the size of an array
-#define countof(array) (size)(sizeof(array) / sizeof(*(array)))
-// Retrieves the size of a string
-#define lengthof(str) (countof(str) - 1)
-
+#define min(a, b) (((a) < (b)) ? (a) : (b))
 // Allocates a new element in the heap
 #define new(data_type) (data_type*)malloc(sizeof(data_type))
 // Allocates a new array of elements in the heap
 #define new_array(data_type, number_of_elements) (data_type*)malloc(sizeof(data_type) * number_of_elements)
+// Retrieves the size of a string
+#define lengthof(str) (countof(str) - 1)
 
-#ifdef bool
+// Retrieves the size of an array
+#define countof(array) (size_t)(sizeof(array) / sizeof(*(array)))
+// Optional type
+typedef struct Optional {
+    bool ok;
+    void* data;
+} Optional;
 
-    // Optional type
-    typedef struct Optional {
-        bool ok;
-        void *data;
-    } Optional;
-
-
-#else // !bool
-
-    // Optional type
-    typedef struct Optional {
-        int ok;
-        void *data;
-    } Optional;
-
-#endif // bool
-
-
-#endif // _HELPERS_H_
+#endif // __ILMARTO_HELPERS_H_

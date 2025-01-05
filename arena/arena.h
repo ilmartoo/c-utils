@@ -1,8 +1,8 @@
 #pragma once
-#ifndef _ARENA_H_
-#define _ARENA_H_
+#ifndef __ILMARTO_ARENA_H_
+#define __ILMARTO_ARENA_H_
 
-#include "types.h"
+#include <stddef.h>
 
 typedef struct Arena Arena;
 
@@ -21,7 +21,7 @@ Arena ArenaDefaultAlloc(void);
  * @brief Deletes an arena.
  * @param arena Arena to use.
  */
-void ArenaRelease(Arena *arena);
+void ArenaRelease(Arena* arena);
 
 /**
  * @brief Reserves some bytes on an arena.
@@ -29,14 +29,14 @@ void ArenaRelease(Arena *arena);
  * @param size Number of bytes to reserve.
  * @returns Pointer to the reserved memory.
  */
-void *ArenaPush(Arena *arena, size_t size);
+void* ArenaPush(Arena* arena, size_t size);
 /**
  * @brief Reserves some bytes on an arena and set them to 0.
  * @param arena Arena to use.
  * @param size Number of bytes to reserve.
  * @returns Pointer to the reserved memory.
  */
-void *ArenaPushZero(Arena *arena, size_t size);
+void* ArenaPushZero(Arena* arena, size_t size);
 /**
  * @brief Reserves some bytes for a type on an arena.
  * @param arena Arena to use.
@@ -58,7 +58,7 @@ void *ArenaPushZero(Arena *arena, size_t size);
  * @param count Size of the array.
  * @returns Pointer to the reserved memory.
  */
-#define ArenaPushArray(arena, type, count) (type *)ArenaPush((arena), sizeof(type)*(count))
+#define ArenaPushArray(arena, type, count) (type*)ArenaPush((arena), sizeof(type) * (count))
 /**
  * @brief Reserves some bytes for a type array on an arena and set them to 0.
  * @param arena Arena to use.
@@ -66,24 +66,24 @@ void *ArenaPushZero(Arena *arena, size_t size);
  * @param count Size of the array.
  * @returns Pointer to the reserved memory.
  */
-#define ArenaPushArrayZero(arena, type, count) (type *)ArenaPushZero((arena), sizeof(type)*(count))
+#define ArenaPushArrayZero(arena, type, count) (type*)ArenaPushZero((arena), sizeof(type) * (count))
 
 /**
  * @brief Frees some bytes from an arena.
  * @param arena Arena to use.
  */
-void ArenaPop(Arena *arena, size_t size);
+void ArenaPop(Arena* arena, size_t size);
 /**
  * @brief Frees all bytes from an arena.
  * @param arena Arena to use.
  */
-void ArenaClear(Arena *arena);
+void ArenaClear(Arena* arena);
 
 /**
  * @brief Gets the used space of an arena.
  * @param arena Arena to use.
  * @returns Used space.
  */
-size_t ArenaUsedSpace(Arena *arena);
+size_t ArenaUsedSpace(Arena* arena);
 
-#endif // _ARENA_H_
+#endif // __ILMARTO_ARENA_H_
