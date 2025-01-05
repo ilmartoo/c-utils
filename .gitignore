@@ -56,3 +56,8 @@ dkms.conf
 dir/
 bin/
 dump/
+
+# IDE dependant
+*.kate-swp
+.vscode/
+.idea/
