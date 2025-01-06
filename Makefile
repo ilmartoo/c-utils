@@ -24,7 +24,7 @@ CFLAGS = -Wall -Werror -Wextra -Wfloat-equal -Wuninitialized -Winit-self -Wno-mi
 # Directories
 #
 SRC_DIR   = src
-FILE_DIRS = $(SRC_DIR) $(SRC_DIR)/arena #$(SRC_DIR)/single_linked_list
+FILE_DIRS = $(addprefix $(SRC_DIR)/,. arena) #single_linked_list
 BIN_DIR   = bin
 INC_DIRS  = $(FILE_DIRS)
 # LIB_DIR   = libs
@@ -47,7 +47,7 @@ INC_PATHS = $(addprefix -I ,$(INC_DIRS))
 #
 # Tests
 #
-TESTS_DIR = src/tests
+TESTS_DIR = tests
 
 TT_NAME       = tests
 TT_DIRS       = $(FILE_DIRS) $(TESTS_DIR)
@@ -66,7 +66,7 @@ TT_INC_PATHS = $(addprefix -I ,$(TT_DIRS))
 TT_SOURCES = $(foreach DIR,$(TT_DIRS),$(wildcard $(DIR)/*.c))
 TT_OBJECTS = $(foreach SRC,$(TT_SOURCES),$(addprefix $(BIN_DIR)/,$(notdir $(SRC:%.c=%.o))))
 
-
+VPATH = $(TT_DIRS)
 
 .PHONY: tests run-tests
 
@@ -76,10 +76,10 @@ TT_OBJECTS = $(foreach SRC,$(TT_SOURCES),$(addprefix $(BIN_DIR)/,$(notdir $(SRC:
 tests: $(TT_EXECUTABLE)
 
 $(TT_EXECUTABLE): $(TT_OBJECTS)
-#	$(CC) $(CFLAGS) $(TT_FLAGS) -o $(TT_EXECUTABLE) $^ $(TT_INC_PATHS) $(LIB_PATHS) $(LIBS)
-	$(CC) $(CFLAGS) $(TT_FLAGS) -o $(TT_EXECUTABLE) $^ $(TT_INC_PATHS)
+#	$(CC) $(CFLAGS) $(TT_FLAGS) -o $@ $^ $(TT_INC_PATHS) $(LIB_PATHS) $(LIBS)
+	$(CC) $(CFLAGS) $(TT_FLAGS) -o $@ $^ $(TT_INC_PATHS)
 
-$(BIN_DIR)/%.o: $(SRC_DIR)/*/%.c
+$(BIN_DIR)/%.o: %.c
 #	$(CC) $(CFLAGS) $(TT_FLAGS) -c -o $@ $< $(TT_INC_PATHS) $(LIB_PATHS) $(LIBS)
 	$(CC) $(CFLAGS) $(TT_FLAGS) -c -o $@ $< $(TT_INC_PATHS)
 
