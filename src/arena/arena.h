@@ -4,19 +4,23 @@
 
 #include <stddef.h>
 
-typedef struct Arena Arena;
+typedef struct Arena {
+    void* stack;
+    size_t size;
+    size_t pos;
+} Arena;
 
+/**
+ * Creates an arena with the default size.
+ * @returns New arena.
+ */
+Arena ArenaCreate(void);
 /**
  * Creates an arena.
  * @param size Size in bytes of the arena.
  * @returns New arena.
  */
-Arena ArenaAlloc(size_t size);
-/**
- * Creates an arena with the default size.
- * @returns New arena.
- */
-Arena ArenaDefaultAlloc(void);
+Arena ArenaCreateSize(size_t size);
 /**
  * Deletes an arena.
  * @param arena Arena to use.
