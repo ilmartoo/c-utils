@@ -3,7 +3,7 @@
 
 void HelpersTests(void)
 {
-    TestGroup("Header helper.h tests", {
+    TestGroup("helper.h", {
         TestCase("min()", {
             Assert("20 must be lower than 10", min(10, 20) == 10);
             Assert("-1 must be lower than 10", min(10, -1) == -1);
