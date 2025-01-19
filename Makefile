@@ -68,12 +68,12 @@ TT_OBJECTS = $(foreach SRC,$(TT_SOURCES),$(addprefix $(BIN_DIR)/,$(notdir $(SRC:
 
 VPATH = $(TT_DIRS)
 
-.PHONY: tests run-tests
+.PHONY: clean prep build run
 
 #
 # Tests build
 #
-tests: $(TT_EXECUTABLE)
+build: prep $(TT_EXECUTABLE)
 
 $(TT_EXECUTABLE): $(TT_OBJECTS)
 #	$(CC) $(CFLAGS) $(TT_FLAGS) -o $@ $^ $(TT_INC_PATHS) $(LIB_PATHS) $(LIBS)
@@ -86,5 +86,15 @@ $(BIN_DIR)/%.o: %.c
 #
 # Execute tests
 #
-run-tests:
+run:
 	$(TT_EXECUTABLE)
+
+#
+# Other rules
+#
+prep:
+	mkdir -p $(BIN_DIR)
+
+
+clean:
+  rm -rf $(BIN_DIR)

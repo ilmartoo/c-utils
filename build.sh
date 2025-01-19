@@ -7,19 +7,12 @@
 for arg in "$@"; do
     if [[ "${arg^^}" == "CLEAN" ]]; then
         echo "[CLEAN]"
-        rm -rf bin
-        mkdir bin
+        make clean
     elif [[ "${arg^^}" == "BUILD" ]]; then
         echo "[BUILD]"
-        if [ ! -d "bin" ]; then 
-            mkdir bin
-        fi
-        make tests
+        make build
     elif [[ "${arg^^}" == "RUN" ]]; then
         echo "[RUN]"
-        if [ ! -d "bin" ]; then
-            mkdir bin
-        fi
-        make run-tests
+        make run
     fi
 done
