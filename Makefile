@@ -84,7 +84,7 @@ $(BIN_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(TT_FLAGS) -c -o $@ $< $(TT_INC_PATHS)
 
 #
-# Build and execute tests
+# Execute tests
 #
-run-tests: tests
+run-tests:
 	$(TT_EXECUTABLE)
