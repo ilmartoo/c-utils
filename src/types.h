@@ -35,6 +35,6 @@ typedef ptrdiff_t size;
 // Unsigned size type
 typedef size_t usize;
 // String type
-typedef char* string;
+typedef char *string;
 
 #endif // __ILMARTO_TYPES_H_
