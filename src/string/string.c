@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include "string.h"
 
 String string_create(const char *string) { return (String){string, (sizeof(string) / sizeof(char)) - 1}; }

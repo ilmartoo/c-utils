@@ -2,9 +2,7 @@
 #ifndef __ILMARTO_STRING_H_
 #define __ILMARTO_STRING_H_
 
-#ifndef size_t
-typedef unsigned long long size_t;
-#endif
+#include <stddef.h>
 
 typedef struct String
 {
