@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 #include "arena.h"
 
 #define DEFAULT_ARENA_PAGE_BYTE_SIZES 1024
@@ -19,16 +18,16 @@ void *arena_push(Arena *arena, size_t size)
         } while (arena->memory_size - arena->memory_pos < size);
         arena->memory = realloc(arena->memory, arena->memory_size);
     }
-    void *allocPos = (void *)((size_t)arena->memory + arena->memory_pos);
+    void *reserved_memory = (void *)((uintptr_t)arena->memory + arena->memory_pos);
     arena->memory_pos += size;
-    return allocPos;
+    return reserved_memory;
 }
 
 void *arena_push_zero(Arena *arena, size_t size)
 {
-    void *allocPos = arena_push(arena, size);
-    memset(allocPos, 0, size);
-    return allocPos;
+    void *reserved_memory = arena_push(arena, size);
+    for (char *m = reserved_memory; size; --size) { *m = 0; }
+    return reserved_memory;
 }
 
 void arena_pop(Arena *arena, size_t size) { arena->memory_pos = arena->memory_pos < size ? 0 : arena->memory_pos - size; }
