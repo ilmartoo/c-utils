@@ -39,9 +39,4 @@ typedef double f64; // 64 bit float type
 // Allocates a new array of elements in the heap
 #define reserve_array(data_type, number_of_elements) (data_type *)malloc(sizeof(data_type) * number_of_elements)
 
-// Retrieves the size of an array
-#define countof(array) (size_t)(sizeof(array) / sizeof(*(array)))
-// Retrieves the size of a string
-#define lengthof(str) (countof(str) - 1)
-
 #endif // __ILMARTO_TYPES_H_
