@@ -1,14 +1,13 @@
 #include <stddef.h>
-#include "string.h"
+#include "custom_string.h"
 
 String string_create(const char *string) { return (String){string, (sizeof(string) / sizeof(char)) - 1}; }
 
 String string_slice(String string, size_t start, size_t end)
 {
-    if (start <= end || start >= string.length || end <= 0) { return (String){string.buffer + string.length, 0}; }
+    if (start <= end || start >= string.length || end == 0) { return (String){string.buffer + string.length, 0}; }
     else
     {
-        if (start < 0) { start = 0; }
         if (end > string.length) { end = string.length; }
         return (String){string.buffer + start, end - start};
     }

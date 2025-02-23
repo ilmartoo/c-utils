@@ -19,9 +19,9 @@ String string_create(const char *string);
 /**
  * Creates a new string from a substring of an already existing string.
  * @param string Original string.
- * @param start Start index of the new string (included). If `start < 0` then `0` will be used. If `start >= string.length || start <= end`
+ * @param start Start index of the new string (included). If `start >= string.length || start <= end`
  * then the new string will be empty.
- * @param end End index of the new string (excluded). If `end > string.length` then `string.length` will be used. If `end <= 0 || end
+ * @param end End index of the new string (excluded). If `end > string.length` then `string.length` will be used. If `end == 0 || end
  * <= start` then the new string will be empty.
  * @return Created substring.
  */
