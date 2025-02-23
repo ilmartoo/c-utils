@@ -27,11 +27,6 @@ Arena areana_create_custom(size_t size);
  * @param arena Arena to use.
  */
 void areana_delete(Arena *arena);
-/**
- * Deletes an arena.
- * @param arena Arena to use.
- */
-void areana_delete(Arena *arena);
 
 /**
  * Reserves some bytes on an arena.
