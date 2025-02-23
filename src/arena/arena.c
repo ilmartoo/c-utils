@@ -32,4 +32,6 @@ void *arena_push_zero(Arena *arena, size_t size)
 
 void arena_pop(Arena *arena, size_t size) { arena->memory_pos = arena->memory_pos < size ? 0 : arena->memory_pos - size; }
 
+void arena_clear(Arena *arena) { arena->memory_pos = 0; }
+
 size_t arena_size(Arena arena) { return arena.memory_pos; }

@@ -34,8 +34,7 @@
 #define log_pointer(x) fprintf(stdout, FILE_LINE STR_INFO "%s = %p" STR_ENDL, __FILE__, __LINE__, #x, x)
 
 // States a block of code
-#define DEBUG_BLOCK(code_block)                                                                                                            \
-    do code_block while (0)
+#define IF_DEBUG if (1)
 
 #else
 
@@ -60,7 +59,7 @@
 #define log_pointer(x)
 
 // States a block of code
-#define DEBUG_BLOCK(code_block)
+#define IF_DEBUG if (0)
 
 #endif // DEBUG
 
