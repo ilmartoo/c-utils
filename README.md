@@ -1,6 +1,6 @@
 # C utils
 
-A set of utilities for the C/C++ programming language.
+A set of utilities for the C programming language.
 
 ## Contents
 
